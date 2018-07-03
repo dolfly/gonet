@@ -2,10 +2,11 @@ package gonet
 
 import (
 	"errors"
-	"net"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	net "github.com/dolfly/gonet/net"
 )
 
 // Error type
@@ -18,7 +19,7 @@ var (
 // Conn exposes a set of callbacks for the various events that occur on a connection
 type Conn struct {
 	srv               *Server
-	conn              *conn.Conn  // the raw connection
+	conn              net.Conn      // the raw connection
 	extraData         interface{}   // to save extra data
 	closeOnce         sync.Once     // close the conn, once, per instance
 	closeFlag         int32         // close flag
@@ -42,7 +43,7 @@ type ConnCallback interface {
 }
 
 // newConn returns a wrapper of raw conn
-func newConn(conn *conn.Conn, srv *Server) *Conn {
+func newConn(conn net.Conn, srv *Server) *Conn {
 	return &Conn{
 		srv:               srv,
 		conn:              conn,
@@ -62,8 +63,8 @@ func (c *Conn) PutExtraData(data interface{}) {
 	c.extraData = data
 }
 
-// GetRawConn returns the raw net.TCPConn from the Conn
-func (c *Conn) GetRawConn() *conn.Conn {
+// GetRawConn returns the raw net.Conn from the Conn
+func (c *Conn) GetRawConn() net.Conn {
 	return c.conn
 }
 

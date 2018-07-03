@@ -1,7 +1,7 @@
 package gonet
 
 import (
-	"net"
+	net "github.com/dolfly/gonet/net"
 )
 
 type Packet interface {
@@ -9,5 +9,5 @@ type Packet interface {
 }
 
 type Protocol interface {
-	ReadPacket(conn *conn.Conn) (Packet, error)
+	ReadPacket(conn net.Conn) (Packet, error)
 }
