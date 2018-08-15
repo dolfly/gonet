@@ -5,7 +5,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/fatedier/frp/utils/log"
+	"github.com/dolfly/gonet/log"
 )
 
 type TcpListener struct {
