@@ -26,7 +26,7 @@ func ListenTCP(bindAddr string, bindPort int) (l *TcpListener, err error) {
 		return l, err
 	}
 
-	listener.SetDeadline(time.Now().Add(20 * time.Second))
+	//listener.SetDeadline(time.Now().Add(20 * time.Second))
 
 	l = &TcpListener{
 		addr:      listener.Addr(),
