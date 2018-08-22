@@ -3,7 +3,7 @@ package net
 import (
 	"fmt"
 	"net"
-	"time"
+	//"time"
 
 	"github.com/dolfly/gonet/log"
 )
